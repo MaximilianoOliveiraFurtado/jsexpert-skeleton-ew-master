@@ -6,7 +6,6 @@
   "scripts": {
     "assets": "npx  http-server --cors -p 8081 assets/",
     "dev": "npx  http-server --cors -p 8080 public/"
-
   },
   "repository": {
     "type": "git",
