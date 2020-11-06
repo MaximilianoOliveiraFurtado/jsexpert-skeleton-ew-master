@@ -1,6 +1,6 @@
-
 const MANIFEST_URL = 'manifest.json'
-const localHost = ['localhost']
+const localHost = ['127.0.0.1', 'localhost']
+
 async function main() {
     const isLocal = !!~localHost.indexOf(window.location.hostname)  
     console.log('isLocal?', isLocal)
@@ -10,11 +10,14 @@ async function main() {
     const network = new Network({ host })
     const videoPlayer = new VideoMediaPlayer({
         manifestJSON,
-        network
+        network,
+        videoComponent
     })
 
     videoPlayer.initializeCodec()
     videoComponent.initializePlayer()
+
+    window.nextChunk = (data) => videoPlayer.nextChunk(data)
 }
 
 window.onload = main
